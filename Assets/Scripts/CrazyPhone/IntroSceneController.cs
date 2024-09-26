@@ -33,7 +33,7 @@ namespace CrazyPhone
 
         private IEnumerator Start()
         {
-            emailBuilder = new PhoneLetterBuilder(input, 0.2f);
+            emailBuilder = new PhoneLetterBuilder(input, 0.4f);
             emailBuilder.SetEnable(false);
             
             yield return new WaitForPhoneNumber(input, phoneNumber, OnUpdateState);
