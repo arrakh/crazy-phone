@@ -19,6 +19,18 @@ namespace CrazyPhone.Input
             {"9", new []{'w', 'x', 'y'}},
         };
         
+        private static Dictionary<string, char[]> _mappingWarped = new(StringComparer.OrdinalIgnoreCase)
+        {
+            {"2", new []{'a', 'b', 'c'}},
+            {"3", new []{'d', 'e', 'f'}},
+            {"4", new []{'g', 'h', 'i'}},
+            {"5", new []{'j', 'k', 'l'}},
+            {"6", new []{'m', 'n', 'o'}},
+            {"7", new []{'p', 'r', 's'}},
+            {"8", new []{'t', 'u', 'v'}},
+            {"9", new []{'w', 'x', 'y'}},
+        };
+        
         public static Dictionary<KeyCode, string> KeycodeMappings = new()
         {
             {KeyCode.Alpha0, "0"},
@@ -49,6 +61,17 @@ namespace CrazyPhone.Input
             if (!_mapping.ContainsKey(key)) return ' ';
             
             var letters = _mapping[key];
+
+            int wrappedIndex = index % letters.Length;
+
+            return letters[wrappedIndex];
+        }
+
+        public static char GetWarped(string key, int index)
+        {
+            if (!_mappingWarped.ContainsKey(key)) return ' ';
+            
+            var letters = _mappingWarped[key];
 
             int wrappedIndex = index % letters.Length;
 

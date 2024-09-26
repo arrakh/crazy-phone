@@ -21,6 +21,7 @@ namespace CrazyPhone.Input
         private bool isClosed, isConnected;
 
         public event Action<string> onKeyDown; 
+        public bool IsClosed => isClosed;
 
         private void LateUpdate()
         {
@@ -31,6 +32,8 @@ namespace CrazyPhone.Input
         public bool GetKey(string key) => currentlyPressed.Contains(key);
         public bool GetKeyDown(string key) => thisFrame.Contains(key);
         public bool GetKeyUp(string key) => releasedThisFrame.Contains(key);
+
+        public void SendSerialMessage(string msg) => serialController.SendSerialMessage(msg);
         
         void OnMessageArrived(string msg)
         {
@@ -75,7 +78,6 @@ namespace CrazyPhone.Input
         }
 
         public void SetLight(bool on) => serialController.SendSerialMessage(on ? "lightOn" : "lightOff");
-        
-        
+
     }
 }

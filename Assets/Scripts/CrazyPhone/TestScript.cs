@@ -5,6 +5,7 @@ using CrazyPhone.Utilities;
 using CrazyPhone.Yields;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CrazyPhone
 {
@@ -12,34 +13,39 @@ namespace CrazyPhone
     {
         [SerializeField] private PhoneInput input;
         [SerializeField] private TextMeshProUGUI text;
+        [SerializeField] private Slider slider;
 
         private WaitForPhoneNumber phone;
+
+        private WaitForPhoneSpamInput spam;
         private PhoneLetterBuilder builder;
 
-        /*private IEnumerator Start()
+        private IEnumerator Start()
         {
-            phone = new (input, "2468");
+            Debug.Log("START");
+            input.SendSerialMessage("ringA");
+            yield return new WaitForPhonePickUp(input);
+            Debug.Log("PICKED UP, put it down...");
+            yield return new WaitForPhoneHangUp(input);
+            Debug.Log("NICEEEEE");
             
-            Debug.Log("START BY PRESSING 3");
-            yield return new WaitForPhoneInput(input, "3");
-z
-            Debug.Log("PRESS 2468");
-            yield return phone;
-            
-            Debug.Log("NICEEE");
-        }*/
+            /*spam = new WaitForPhoneSpamInput(input, 80, "1", "3", "9");
+            yield return spam;
+            Debug.Log("DONE!")*/;
+        }
 
-        private void Start()
+        /*private void Start()
         {
             builder = new PhoneLetterBuilder(input);
             //TextToSpeech.Start("Hello arya, your email is arrakhpra@email.com");
-        }
+        }*/
 
         private void Update()
         {
+            //slider.value = spam.NormalizedAlpha;
             //text.text = phone.CurrentProgress;
-            builder.Update(Time.deltaTime);
-            text.text = $"{builder.CurrentText}<alpha=#44>{builder.CurrentLetter.ToString()}";
+            //builder.Update(Time.deltaTime);
+            //text.text = $"{builder.CurrentText}<alpha=#44>{builder.CurrentLetter.ToString()}";
         }
     }
 }
