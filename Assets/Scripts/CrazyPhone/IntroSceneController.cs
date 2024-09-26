@@ -68,12 +68,12 @@ namespace CrazyPhone
             emailBuilder.Update(Time.deltaTime);
         }
 
-        private void OnUpdateState(WaitForPhoneNumber phoneNumber, bool wasCorrect)
+        private void OnUpdateState(WaitForPhoneNumber ph, bool wasCorrect)
         {
             if (!wasCorrect)
             {
                 audioSource.PlayOneShot(wrongClip);
-                phoneNumber.Clear();
+                ph.Clear();
             }
         }
     }

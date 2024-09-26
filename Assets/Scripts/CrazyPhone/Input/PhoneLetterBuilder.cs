@@ -14,15 +14,17 @@ namespace CrazyPhone.Input
         private bool shouldRecordOnUpdate = false;
         private bool disposed = false;
         private bool enabled = true;
+        private bool isWarped = false;
 
         public string CurrentText => currentText;
         public char CurrentLetter => currentLetter;
         
-        public PhoneLetterBuilder(PhoneInput phoneInput, float cooldown = 0.5f)
+        public PhoneLetterBuilder(PhoneInput phoneInput, float cooldown = 0.5f, bool isWarped = false)
         {
             currentText = lastKey = String.Empty;
             this.phoneInput = phoneInput;
             this.cooldown = cooldown;
+            this.isWarped = isWarped;
 
             phoneInput.onKeyDown += OnKeyDown;
         }
