@@ -923,6 +923,7 @@ MonoBehaviour:
   firstNumber: 1
   secondClip: {fileID: 8300000, guid: 2b9a32ea784fb9f4ab79bf43b96c1fc8, type: 3}
   afterEmailClip: {fileID: 8300000, guid: 8348fc5b6974be24db721ed976dd9c3c, type: 3}
+  hangUpClip: {fileID: 8300000, guid: 81356dcddc17644429a32e9ee2b98ed6, type: 3}
 --- !u!4 &696409311
 Transform:
   m_ObjectHideFlags: 0

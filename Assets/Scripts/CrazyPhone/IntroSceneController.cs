@@ -45,13 +45,13 @@ namespace CrazyPhone
             
             //"You have reached Óbidos Hospital. If you're calling to schedule an appointment, please press .1"
             audioSource.PlayOneShot(introClip);
-            yield return new WaitForSeconds(introClip.length);
+            yield return new WaitForSeconds(introClip.length + 1f);
 
             yield return new WaitForPhoneInput(input, firstNumber);
             
             //"To help us direct your call, please type your email address, using the letters on your telephone."
             audioSource.PlayOneShot(secondClip);
-            yield return new WaitForSeconds(secondClip.length);
+            yield return new WaitForSeconds(secondClip.length + 1f);
 
             emailBuilder.SetEnable(true);
 
