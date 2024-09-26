@@ -4,6 +4,7 @@ using CrazyPhone.Input;
 using CrazyPhone.Utilities;
 using CrazyPhone.Yields;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CrazyPhone
 {
@@ -27,6 +28,8 @@ namespace CrazyPhone
         [SerializeField] private AudioClip secondClip;
         private PhoneLetterBuilder emailBuilder;
         [SerializeField] private AudioClip afterEmailClip;
+
+        [SerializeField] private AudioClip hangUpClip;
 
         private IEnumerator Start()
         {
@@ -61,6 +64,12 @@ namespace CrazyPhone
             TextToSpeech.Start(email);
             
             yield return new WaitForSeconds(2f + email.Length * 0.2f);
+            
+            audioSource.PlayOneShot(hangUpClip);
+            yield return new WaitForSeconds(hangUpClip.length);
+            yield return new WaitForPhoneHangUp(input);
+
+            SceneManager.LoadScene("CrazySequence");
         }
 
         private void Update()
