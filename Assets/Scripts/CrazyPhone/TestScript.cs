@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using CrazyPhone.Input;
+using CrazyPhone.Utilities;
+using CrazyPhone.Yields;
 using TMPro;
 using UnityEngine;
 
@@ -30,6 +32,7 @@ z
         private void Start()
         {
             builder = new PhoneLetterBuilder(input);
+            //TextToSpeech.Start("Hello arya, your email is arrakhpra@email.com");
         }
 
         private void Update()

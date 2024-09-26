@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CrazyPhone.Input
 {
-    public class PhoneLetterBuilder
+    public class PhoneLetterBuilder : IDisposable
     {
         private PhoneInput phoneInput;
         private string currentText;
@@ -12,6 +12,8 @@ namespace CrazyPhone.Input
         private int currentCount;
         private float cooldown, currentCooldown;
         private bool shouldRecordOnUpdate = false;
+        private bool disposed = false;
+        private bool enabled = true;
 
         public string CurrentText => currentText;
         public char CurrentLetter => currentLetter;
@@ -27,6 +29,8 @@ namespace CrazyPhone.Input
 
         private void OnKeyDown(string key)
         {
+            if (!enabled) return;
+
             if (key.Equals("*"))
             {
                 Delete();
@@ -46,6 +50,7 @@ namespace CrazyPhone.Input
             }
 
             currentLetter = PhoneMappings.Get(lastKey, currentCount);
+            if (currentLetter.Equals(' ')) return;
 
             //if (!isSameKey && !isFirstTime) return;
             shouldRecordOnUpdate = true;
@@ -53,14 +58,20 @@ namespace CrazyPhone.Input
 
         public void Clear() => currentText = String.Empty;
 
+        public void SetEnable(bool enable) => enabled = enable;
+
         public void Delete()
         {
+            if (!enabled) return;
+
             if (string.IsNullOrEmpty(currentText)) return;
             currentText = currentText.Remove(currentText.Length - 1, 1);
         }
 
         public void Update(float deltaTime)
         {
+            if (!enabled) return;
+            if (disposed) return;
             currentCooldown -= deltaTime;
             if (currentCooldown > 0f) return;
 
@@ -77,6 +88,12 @@ namespace CrazyPhone.Input
             currentCount = -1;
             currentText += currentLetter;
             currentLetter = ' ';
+        }
+
+        public void Dispose()
+        {
+            if (disposed) return;
+            disposed = true;
         }
     }
 }
