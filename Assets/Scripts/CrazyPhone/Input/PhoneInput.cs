@@ -27,7 +27,7 @@ namespace CrazyPhone.Input
 
         private void Awake()
         {
-            serialController.portName = PORT;
+            //serialController.portName = PORT;
         }
 
         private void LateUpdate()
