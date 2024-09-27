@@ -42,6 +42,7 @@ namespace CrazyPhone
         [Header("Press 5 After Pressing 7")] 
         [SerializeField] private AudioClip fiveAfterSevenClip;
         [SerializeField] private AudioClip noticeClip;
+        [SerializeField] private AudioClip confirmationClip;
 
         [SerializeField] private AudioClip hangUpClip;
 
@@ -104,11 +105,15 @@ namespace CrazyPhone
             yield return new WaitForSeconds(fiveAfterSevenClip.length);
             yield return new WaitForPhoneNumber(input, "75", OnUpdateState);
             
-            //We have noticed you are using a computer. Your confirmation number is required to continue.
+            //We have noticed you are using a computer. 
             audioSource.PlayOneShot(noticeClip);
             yield return new WaitForSeconds(noticeClip.length + 1f);
             
-            SceneManager.LoadScene("CrazySequence");
+            //Your confirmation number is required to continue.
+            audioSource.PlayOneShot(confirmationClip);
+            yield return new WaitForSeconds(confirmationClip.length + 1f);
+            
+            SceneManager.LoadScene("FormSequence");
 
             yield break;
 

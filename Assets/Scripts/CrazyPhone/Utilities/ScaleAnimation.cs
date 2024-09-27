@@ -19,6 +19,7 @@ namespace CrazyPhone.Utilities
         [SerializeField] private float randomDurationRange;
         
         private Tween tween;
+        public float Duration => duration;
         
         private void Start()
         {

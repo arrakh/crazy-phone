@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CrazySequence.unity
     guid: 44ae66beab6e3e64e80251405f2ee3ca
+  - enabled: 1
+    path: Assets/Scenes/FormSequence.unity
+    guid: 7224d4d35293e3641a4d7e91bcd59455
+  - enabled: 1
+    path: Assets/Scenes/MidSequence.unity
+    guid: ade7cd1c9012e934eafef0dcea4f8e50
   m_configObjects: {}

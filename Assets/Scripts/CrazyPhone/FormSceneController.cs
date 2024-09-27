@@ -4,6 +4,7 @@ using CrazyPhone.Input;
 using CrazyPhone.Utilities;
 using CrazyPhone.Yields;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CrazyPhone
 {
@@ -18,7 +19,7 @@ namespace CrazyPhone
         [SerializeField] private AudioClip success;
         [SerializeField] private ScaleAnimation popInAnimation, popOutAnimation;
 
-        private string formConfirmationNumber = "215920";
+        private readonly string formConfirmationNumber = "215920";
 
         private IEnumerator Start()
         {            
@@ -31,6 +32,10 @@ namespace CrazyPhone
             yield return new WaitForSeconds(success.length);
 
             popOutAnimation.StartAnimation();
+            
+            yield return new WaitForSeconds(popOutAnimation.Duration);
+
+            SceneManager.LoadScene("MidSequence");
         }
 
         private void OnUpdateState(WaitForPhoneNumber ph, bool wasCorrect)
@@ -38,6 +43,7 @@ namespace CrazyPhone
             if (!wasCorrect)
             {
                 ph.Clear();
+                if (ph.CurrentProgress[^1].Equals("0")) audioSource.PlayOneShot(wrongClip);
             }
         }
     }

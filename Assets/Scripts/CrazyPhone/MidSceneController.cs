@@ -18,7 +18,6 @@ namespace CrazyPhone
         [Header("Flies")] 
         [SerializeField] private GameObject flies;
         [SerializeField] private AudioClip likeFliesClip;
-        [SerializeField] private AudioClip flyAnswerSfx;
 
         [Header("Chose an appointment month")] 
         [SerializeField] private AudioClip appoMonthClip;
@@ -66,10 +65,8 @@ namespace CrazyPhone
                 answer = flyAnswer.Input;
             } 
             while (answer != "1");
-            
-            audioSource.PlayOneShot(flyAnswerSfx);
-            yield return new WaitForSeconds(flyAnswerSfx.length);
-            
+            flies.SetActive(false);
+
             //To start the application process, please provide a month for your chosen appointment, using the the letters on your keypad.
             audioSource.PlayOneShot(appoMonthClip);
             yield return new WaitForSeconds(appoMonthClip.length + 1f);

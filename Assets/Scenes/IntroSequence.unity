@@ -931,6 +931,7 @@ MonoBehaviour:
   thankForProvideClip: {fileID: 8300000, guid: 5c2cce0b507895e4893a060b60172ab0, type: 3}
   fiveAfterSevenClip: {fileID: 8300000, guid: 4f730c971009fa342ada148f2014e096, type: 3}
   noticeClip: {fileID: 8300000, guid: acc3abd015717334d9d80aab3ef8b754, type: 3}
+  confirmationClip: {fileID: 8300000, guid: e9919803f5019814186534314656c531, type: 3}
   hangUpClip: {fileID: 8300000, guid: 81356dcddc17644429a32e9ee2b98ed6, type: 3}
 --- !u!4 &696409311
 Transform:
