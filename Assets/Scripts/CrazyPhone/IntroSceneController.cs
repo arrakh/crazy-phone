@@ -72,6 +72,11 @@ namespace CrazyPhone
             yield return new WaitForSeconds(nameClip.length + 1f);
             yield return new WaitForPhoneInput(input, "*");
             PlayerInfo.name = letterBuilder.CurrentText;
+            yield return new WaitForSeconds(1f);
+            var nameString = "Hello, " + PlayerInfo.name;
+            TextToSpeech.Start(nameString);
+            yield return new WaitForSeconds(2f + nameString.Length * 0.2f);
+            
             letterBuilder.Clear();
             letterBuilder.SetEnable(false);
 
@@ -83,15 +88,15 @@ namespace CrazyPhone
             letterBuilder.SetEnable(true);
             yield return new WaitForPhoneInput(input, "*");
             PlayerInfo.email = letterBuilder.CurrentText;
-            letterBuilder.Clear();
-            letterBuilder.SetEnable(false);
             
             audioSource.PlayOneShot(afterEmailClip);
             yield return new WaitForSeconds(afterEmailClip.length + 1f);
             var email = $"{letterBuilder.CurrentText}@email.com";
             TextToSpeech.Start(email);
             yield return new WaitForSeconds(2f + email.Length * 0.2f);
-            
+            letterBuilder.Clear();
+            letterBuilder.SetEnable(false);
+
             //Please hold
             audioSource.PlayOneShot(pleaseHoldClip);
             yield return new WaitForSeconds(pleaseHoldClip.length);
