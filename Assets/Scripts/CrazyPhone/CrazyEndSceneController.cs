@@ -40,6 +40,8 @@ namespace CrazyPhone
         [SerializeField] private Sprite secondCrack, thirdCrack;
         [SerializeField] private ShakePositionAnimation screamShake;
 
+        [SerializeField] private AudioClip finalWinClip;
+
         private IEnumerator Start()
         {
             //First Fly
@@ -102,6 +104,14 @@ namespace CrazyPhone
             audioSource.PlayOneShot(screamClip);
             yield return new WaitForSeconds(screamClip.length);
             yield return new WaitForPhoneSpamInput(input, 50, OnUpdateFinalScreamSpam, PhoneMappings.KeypadStrings);
+            
+            //Congratulations.... You appointment for City of Óbidos National Sanatorium is confirmed. Thank you for calling. Good bye.
+            yield return new WaitForSeconds(3f);
+            
+            audioSource.PlayOneShot(finalWinClip);
+            yield return new WaitForSeconds(finalWinClip.length + 0.2f);
+            
+            Application.Quit();
         }
 
         private void OnUpdateFinalScreamSpam(WaitForPhoneSpamInput spamInput, bool success)
@@ -120,7 +130,7 @@ namespace CrazyPhone
 
         private void OnUpdateScreamSpam(WaitForPhoneSpamInput spamInput, bool success)
         {
-            screamSource.volume = screamProgressCurve.Evaluate(1f - spamInput.NormalizedAlpha);
+            screamSource.volume = screamProgressCurve.Evaluate(spamInput.NormalizedAlpha);
         }
 
         private void Update()
