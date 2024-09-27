@@ -965,7 +965,7 @@ MonoBehaviour:
   snailObject: {fileID: 1938991917}
   snailClip: {fileID: 8300000, guid: ae22943cd51dc374ca0eb7020f6be9e4, type: 3}
   snailShake: {fileID: 1938991918}
-  appoDayClip: {fileID: 8300000, guid: 7806cb56412bebd4e8504d557e4b9b0d, type: 3}
+  appoDayClip: {fileID: 8300000, guid: 80a9baa1960913f4498b73919a9ea746, type: 3}
   flyLoopSource: {fileID: 665052878}
   squashFlyObject: {fileID: 1552960390}
   squashFlyClip: {fileID: 8300000, guid: 0bc02810de484dd4b8c46661f0e58dd2, type: 3}
