@@ -113,6 +113,14 @@ namespace CrazyPhone
             audioSource.PlayOneShot(confirmationClip);
             yield return new WaitForSeconds(confirmationClip.length + 1f);
             
+            //Your confirmation number is required to continue.
+            audioSource.PlayOneShot(confirmationClip);
+            yield return new WaitForSeconds(confirmationClip.length + 1f);
+            
+            //Your confirmation number is required to continue.
+            audioSource.PlayOneShot(confirmationClip);
+            yield return new WaitForSeconds(confirmationClip.length + 1f);
+            
             SceneManager.LoadScene("FormSequence");
 
             yield break;

@@ -649,6 +649,7 @@ MonoBehaviour:
   success: {fileID: 8300000, guid: 82f296c6fd9775845875e1a3df44db81, type: 3}
   popInAnimation: {fileID: 241493925}
   popOutAnimation: {fileID: 1380948026}
+  introClip: {fileID: 8300000, guid: b20cf405d255ee543bdad84b5874ad31, type: 3}
 --- !u!1 &1006947082
 GameObject:
   m_ObjectHideFlags: 0

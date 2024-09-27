@@ -18,12 +18,14 @@ namespace CrazyPhone
         [SerializeField] private AudioClip wrongClip;
         [SerializeField] private AudioClip success;
         [SerializeField] private ScaleAnimation popInAnimation, popOutAnimation;
+        [SerializeField] private AudioClip introClip;
 
         private readonly string formConfirmationNumber = "215920";
 
         private IEnumerator Start()
         {            
             popInAnimation.StartAnimation();
+            audioSource.PlayOneShot(introClip);
 
             yield return new WaitForPhoneNumber(input, formConfirmationNumber, OnUpdateState);
             yield return new WaitForSeconds(1f);

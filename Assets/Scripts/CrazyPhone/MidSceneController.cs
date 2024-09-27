@@ -29,8 +29,10 @@ namespace CrazyPhone
 
         [Header("Chose an appointment day")] 
         [SerializeField] private AudioClip appoDayClip;
-        
+
         [Header("Squash the fly")] 
+        [SerializeField] private AudioSource flyLoopSource;
+        [SerializeField] private GameObject squashFlyObject;
         [SerializeField] private AudioClip squashFlyClip;
         [SerializeField] private AudioClip goodWorkClip;
 
@@ -84,11 +86,16 @@ namespace CrazyPhone
             yield return new WaitForSeconds(appoDayClip.length + 1f);
             
             //Sounds like a fly has been trapped in your phone, please put the phone down to smash it. Don't forget to pick up again.
+            flyLoopSource.Play();
+            squashFlyObject.SetActive(true);
             audioSource.PlayOneShot(squashFlyClip);
             yield return new WaitForSeconds(squashFlyClip.length);
             yield return new WaitForPhoneHangUp(input);
+            squashFlyObject.SetActive(false);
+            flyLoopSource.Stop();
             yield return new WaitForPhonePickUp(input);
-            
+            yield return new WaitForSeconds(2f);
+
             //Good work! You are almost there, now please listen carefully.
             audioSource.PlayOneShot(goodWorkClip);
             yield return new WaitForSeconds(goodWorkClip.length + 1f);
