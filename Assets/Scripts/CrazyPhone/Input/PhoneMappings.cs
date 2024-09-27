@@ -54,6 +54,9 @@ namespace CrazyPhone.Input
             {KeyCode.Keypad7, "7"},
             {KeyCode.Keypad8, "8"},
             {KeyCode.Keypad9, "9"},
+
+            {KeyCode.A, "*"},
+            {KeyCode.S, "#"},
         };
 
         public static char Get(string key, int index)
