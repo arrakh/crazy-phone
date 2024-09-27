@@ -919,18 +919,18 @@ MonoBehaviour:
   wrongClip: {fileID: 8300000, guid: bee9def2369895d46a4410e4154eb46e, type: 3}
   holdTone: {fileID: 8300000, guid: 6917592710a997c4180f39a28c588a43, type: 3}
   holdDuration: 8
-  introClip: {fileID: 8300000, guid: 55c292ee5fdc4684e920b2d2278c4684, type: 3}
+  introClip: {fileID: 8300000, guid: d40588ca319c8714998c57cb8fcce6bd, type: 3}
   firstNumber: 1
-  birthDateClip: {fileID: 0}
-  nameClip: {fileID: 0}
-  emailClip: {fileID: 0}
-  afterEmailClip: {fileID: 8300000, guid: 8348fc5b6974be24db721ed976dd9c3c, type: 3}
-  pleaseHoldClip: {fileID: 0}
+  birthDateClip: {fileID: 8300000, guid: 02c453145d4d6b84ebc6e94e7d06af9b, type: 3}
+  nameClip: {fileID: 8300000, guid: 4ff010e90ff5a52418f2c3f4a1a289c4, type: 3}
+  emailClip: {fileID: 8300000, guid: 1f7c0fb217e5c3b47bf2e25755f8a162, type: 3}
+  afterEmailClip: {fileID: 8300000, guid: a2dd3880cebaef14399c592ae12b22c2, type: 3}
+  pleaseHoldClip: {fileID: 8300000, guid: c97f0ebb9fdec074c8c4d0f7b1fb7a78, type: 3}
   holdMusic: {fileID: 0}
   holdMusicDuration: 0
-  thankForProvideClip: {fileID: 0}
-  fiveAfterSevenClip: {fileID: 0}
-  noticeClip: {fileID: 0}
+  thankForProvideClip: {fileID: 8300000, guid: 5c2cce0b507895e4893a060b60172ab0, type: 3}
+  fiveAfterSevenClip: {fileID: 8300000, guid: 4f730c971009fa342ada148f2014e096, type: 3}
+  noticeClip: {fileID: 8300000, guid: acc3abd015717334d9d80aab3ef8b754, type: 3}
   hangUpClip: {fileID: 8300000, guid: 81356dcddc17644429a32e9ee2b98ed6, type: 3}
 --- !u!4 &696409311
 Transform:

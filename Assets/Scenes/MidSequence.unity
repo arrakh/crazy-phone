@@ -830,24 +830,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 1086927089}
   audioSource: {fileID: 696409309}
-  thankYouClip: {fileID: 0}
+  thankYouClip: {fileID: 8300000, guid: 36ad0cde18d5e8a498fa2093bd184e4a, type: 3}
   flies: {fileID: 745238051}
-  likeFliesClip: {fileID: 0}
+  likeFliesClip: {fileID: 8300000, guid: 8d71a734df2204041b546f15dc4f59e9, type: 3}
   flyAnswerSfx: {fileID: 0}
-  appoMonthClip: {fileID: 0}
+  appoMonthClip: {fileID: 8300000, guid: a820299efb8aa334198e164b96f9c730, type: 3}
   snailObject: {fileID: 1938991917}
-  snailClip: {fileID: 0}
+  snailClip: {fileID: 8300000, guid: ae22943cd51dc374ca0eb7020f6be9e4, type: 3}
   snailShake: {fileID: 1938991918}
-  appoDayClip: {fileID: 0}
-  squashFlyClip: {fileID: 0}
-  goodWorkClip: {fileID: 0}
-  pleaseHelpClip: {fileID: 0}
-  wrongSfx: {fileID: 0}
-  correctSfx: {fileID: 0}
-  thankYouForFollowingClip: {fileID: 0}
-  pleaseHoldClip: {fileID: 0}
+  appoDayClip: {fileID: 8300000, guid: 7806cb56412bebd4e8504d557e4b9b0d, type: 3}
+  squashFlyClip: {fileID: 8300000, guid: 0bc02810de484dd4b8c46661f0e58dd2, type: 3}
+  goodWorkClip: {fileID: 8300000, guid: 6b25e2c98f0b5c946b94dd2f96a73f83, type: 3}
+  pleaseHelpClip: {fileID: 8300000, guid: 92901d2de9c5ff74aa1300133aed9cdc, type: 3}
+  wrongSfx: {fileID: 8300000, guid: fbe7cc8e0e3e7df4f91f27342ef571ad, type: 3}
+  correctSfx: {fileID: 8300000, guid: 2e081760883baab419d9516390da397e, type: 3}
+  thankYouForFollowingClip: {fileID: 8300000, guid: e369818bd56805d419457b1d439517e5, type: 3}
+  pleaseHoldClip: {fileID: 8300000, guid: 77d9a531df65683489fee2f2b9077873, type: 3}
   holdMusicDuration: 4
-  toContinueClip: {fileID: 0}
+  toContinueClip: {fileID: 8300000, guid: ed238eea4a38e9640b0a1a319cca3bf8, type: 3}
 --- !u!1 &745238051
 GameObject:
   m_ObjectHideFlags: 0
