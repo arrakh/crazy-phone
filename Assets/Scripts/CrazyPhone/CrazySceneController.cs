@@ -1,23 +1,47 @@
 ﻿using System;
 using System.Collections;
 using CrazyPhone.Input;
+using CrazyPhone.UI;
 using CrazyPhone.Utilities;
 using CrazyPhone.Yields;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
 
 namespace CrazyPhone
 {
     public class CrazySceneController : MonoBehaviour
     {
-
         [SerializeField] private PhoneInput input;
-        [SerializeField] private string phoneNumber = "915";
         [SerializeField] private AudioSource audioSource;
-        [SerializeField] private AudioClip wrongClip;
+
+        [Header("Call Asylum")]
+        [SerializeField] private string phoneNumber = "915";
+        
+        [Header("Hold tone")]
         [SerializeField] private AudioClip holdTone;
         [SerializeField] private float holdDuration = 9f;
+        
+        [Header("Intro")]
         [SerializeField] private AudioClip asylumIntro;
+
+        [Header("Name Warped")] 
+        [SerializeField] private AudioClip namePromptClip;
+        [SerializeField] private TextWindow textWindow;
+        [SerializeField] private ScaleAnimation textScaleOut;
+        
+        [Header("Smash Fly")]
+        [SerializeField] private AudioSource flyLoopSource;
+        [SerializeField] private GameObject squashFlyObject;
+        [SerializeField] private AudioClip squashFlyClip;
+
+        [Header("Help Me")] 
+        [SerializeField] private AudioClip beNiceClip;
+        [SerializeField] private AudioClip helpMeClip;
+        [SerializeField] private AudioClip wrongSfx;
+        [SerializeField] private AudioClip correctSfx;
+        [SerializeField] private AudioClip thankYouForFollowingClip;
+
         [SerializeField] private AudioClip helpMe;
         [SerializeField] private AudioClip press5;
         [SerializeField] private string Five;
@@ -29,6 +53,8 @@ namespace CrazyPhone
         [SerializeField] private AudioClip iSaidLouder;
         [SerializeField] private AudioClip screamAsHardAsYouCan;
         [SerializeField] private AudioClip appointmentConfirmed;
+
+        [SerializeField] private AudioClip wrongClip;
 
         private IEnumerator Start()
         {
@@ -42,7 +68,60 @@ namespace CrazyPhone
 
             //"You've reached City of Óbidos National Sanatorium. In order to get help, please say:"
             audioSource.PlayOneShot(asylumIntro);
-            yield return new WaitForSeconds(asylumIntro.length);
+            yield return new WaitForSeconds(asylumIntro.length + 0.3f);
+
+            //For authentication purposes, please type your name
+            audioSource.PlayOneShot(namePromptClip);
+            yield return new WaitForSeconds(namePromptClip.length + 0.4f);
+            
+            textWindow.Initialize(PlayerInfo.name, 0.5f, true);
+            textWindow.gameObject.SetActive(true);
+
+            yield return new WaitUntil(() => textWindow.IsCompleted);
+            
+            textScaleOut.StartAnimation();
+            yield return new WaitForSeconds(textScaleOut.Duration);
+            textWindow.gameObject.SetActive(false);
+            
+            // Smash the fly!
+            flyLoopSource.Play();
+            squashFlyObject.SetActive(true);
+            audioSource.PlayOneShot(squashFlyClip);
+            yield return new WaitForSeconds(squashFlyClip.length);
+            yield return new WaitForPhoneHangUp(input);
+            squashFlyObject.SetActive(false);
+            flyLoopSource.Stop();
+            yield return new WaitForPhonePickUp(input);
+            yield return new WaitForSeconds(2f);
+            
+            //In order to get help, please say: Help me, be nice
+            audioSource.PlayOneShot(beNiceClip);
+            yield return new WaitForSeconds(beNiceClip.length + 0.5f);
+            yield return new WaitForPhoneInput(input, "5");
+            audioSource.PlayOneShot(wrongSfx);
+            yield return new WaitForSeconds(wrongSfx.length + 0.2f);
+            
+            //In order to get help, please say: Help me while pressing 5. PART 1
+            audioSource.PlayOneShot(helpMeClip);
+            yield return new WaitForSeconds(helpMeClip.length + 0.5f);
+            yield return new WaitForPhoneInput(input, "5");
+            audioSource.PlayOneShot(wrongSfx);
+            yield return new WaitForSeconds(wrongSfx.length + 0.2f);
+            
+            //In order to get help, please say: Help me while pressing 5. PART 2
+            audioSource.PlayOneShot(helpMeClip);
+            yield return new WaitForSeconds(helpMeClip.length + 0.5f);
+            yield return new WaitForPhoneInput(input, "5");
+            audioSource.PlayOneShot(correctSfx);
+            yield return new WaitForSeconds(correctSfx.length + 0.2f);
+            
+            //Thank you for following the instructions carefully.
+            audioSource.PlayOneShot(thankYouForFollowingClip);
+            yield return new WaitForSeconds(thankYouForFollowingClip.length + 0.5f);
+
+            SceneManager.LoadScene("FormSequence 2");
+
+            yield break;
 
             //"Help me"
             audioSource.PlayOneShot(helpMe);

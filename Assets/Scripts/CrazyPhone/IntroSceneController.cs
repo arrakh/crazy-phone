@@ -44,8 +44,6 @@ namespace CrazyPhone
         [SerializeField] private AudioClip noticeClip;
         [SerializeField] private AudioClip confirmationClip;
 
-        [SerializeField] private AudioClip hangUpClip;
-
         private IEnumerator Start()
         {
             letterBuilder = new PhoneLetterBuilder(input, 0.4f);
@@ -121,22 +119,8 @@ namespace CrazyPhone
             audioSource.PlayOneShot(confirmationClip);
             yield return new WaitForSeconds(confirmationClip.length + 1f);
             
-            //Your confirmation number is required to continue.
-            audioSource.PlayOneShot(confirmationClip);
-            yield return new WaitForSeconds(confirmationClip.length + 1f);
             
-            //Your confirmation number is required to continue.
-            audioSource.PlayOneShot(confirmationClip);
-            yield return new WaitForSeconds(confirmationClip.length + 1f);
-            
-            SceneManager.LoadScene("FormSequence");
-
-            yield break;
-
-            audioSource.PlayOneShot(hangUpClip);
-            yield return new WaitForSeconds(hangUpClip.length);
-            yield return new WaitForPhoneHangUp(input);
-
+            SceneManager.LoadScene("FormSequence 1");
         }
 
         private void Update()

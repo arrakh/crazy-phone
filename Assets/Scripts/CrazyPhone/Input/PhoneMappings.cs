@@ -30,6 +30,8 @@ namespace CrazyPhone.Input
             {"8", new []{'t', 'u', 'v'}},
             {"9", new []{'w', 'x', 'y'}},
         };
+
+        public static string[] KeypadStrings = new[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", };
         
         public static Dictionary<KeyCode, string> KeycodeMappings = new()
         {
