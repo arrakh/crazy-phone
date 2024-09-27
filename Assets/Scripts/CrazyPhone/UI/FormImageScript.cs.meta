@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 51ffc10aedb933640b4b3d481e9ff03d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - input: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - formImage: {instanceID: 0}
+  - pageFlipClip: {fileID: 8300000, guid: f1e6f3bce660af74f8f6068a5d96e60e, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
