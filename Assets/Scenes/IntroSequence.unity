@@ -926,8 +926,8 @@ MonoBehaviour:
   emailClip: {fileID: 8300000, guid: 1f7c0fb217e5c3b47bf2e25755f8a162, type: 3}
   afterEmailClip: {fileID: 8300000, guid: a2dd3880cebaef14399c592ae12b22c2, type: 3}
   pleaseHoldClip: {fileID: 8300000, guid: c97f0ebb9fdec074c8c4d0f7b1fb7a78, type: 3}
-  holdMusic: {fileID: 8300000, guid: 0bbf15255c642804b947b015df970224, type: 3}
-  holdMusicDuration: 12
+  holdMusic: {fileID: 8300000, guid: c12123141a100b34f8dc8aec8d266973, type: 3}
+  holdMusicDuration: 7
   thankForProvideClip: {fileID: 8300000, guid: 5c2cce0b507895e4893a060b60172ab0, type: 3}
   fiveAfterSevenClip: {fileID: 8300000, guid: 4f730c971009fa342ada148f2014e096, type: 3}
   noticeClip: {fileID: 8300000, guid: acc3abd015717334d9d80aab3ef8b754, type: 3}

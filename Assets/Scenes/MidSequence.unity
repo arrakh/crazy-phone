@@ -1192,7 +1192,8 @@ MonoBehaviour:
   correctSfx: {fileID: 8300000, guid: 2e081760883baab419d9516390da397e, type: 3}
   thankYouForFollowingClip: {fileID: 8300000, guid: e369818bd56805d419457b1d439517e5, type: 3}
   pleaseHoldClip: {fileID: 8300000, guid: 77d9a531df65683489fee2f2b9077873, type: 3}
-  holdMusicDuration: 4
+  holdMusic: {fileID: 8300000, guid: 0bbf15255c642804b947b015df970224, type: 3}
+  holdMusicDuration: 7
   toContinueClip: {fileID: 8300000, guid: ed238eea4a38e9640b0a1a319cca3bf8, type: 3}
 --- !u!1 &745238051
 GameObject:
