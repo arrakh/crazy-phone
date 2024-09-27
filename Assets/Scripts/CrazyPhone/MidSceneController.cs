@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using CrazyPhone.Input;
+using CrazyPhone.Utilities;
 using CrazyPhone.Yields;
 using TenSecondsReplay.Utilities;
 using UnityEngine;
@@ -26,6 +27,9 @@ namespace CrazyPhone
         [SerializeField] private GameObject snailObject;
         [SerializeField] private AudioClip snailClip;
         [SerializeField] private ShakePositionAnimation snailShake;
+        [SerializeField] private ScaleAnimation snailPopOutAnimation;
+        [SerializeField] private AudioSource snailAudioSource;
+        [SerializeField] private AudioClip snailDieClip;
 
         [Header("Chose an appointment day")] 
         [SerializeField] private AudioClip appoDayClip;
@@ -76,9 +80,14 @@ namespace CrazyPhone
 
             //It appears a snail is blocking you from progressing further in the application process. Please remove the snail.
             snailObject.SetActive(true);
-            audioSource.PlayOneShot(snailClip);
-            yield return new WaitForSeconds(snailClip.length + 1f);
+            // audioSource.PlayOneShot(snailClip);
+            // yield return new WaitForSeconds(snailClip.length + 1f);
             yield return new WaitForPhoneSpamInput(input, 10, OnSnailSpam, "6");
+            
+            snailPopOutAnimation.StartAnimation();
+            snailAudioSource.PlayOneShot(snailDieClip);
+            yield return new WaitForSeconds(snailPopOutAnimation.Duration);
+
             snailObject.SetActive(false);
             yield return new WaitForSeconds(2f);
 
