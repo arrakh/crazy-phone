@@ -510,8 +510,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 696409311}
-  - component: {fileID: 696409312}
   - component: {fileID: 696409309}
+  - component: {fileID: 696409312}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -639,7 +639,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 696409308}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494365c311f21374a810a3b950265bb9, type: 3}
+  m_Script: {fileID: 11500000, guid: adcda626a953cfc4da7c77a4e561b880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 1086927089}
@@ -649,7 +649,7 @@ MonoBehaviour:
   success: {fileID: 8300000, guid: 82f296c6fd9775845875e1a3df44db81, type: 3}
   popInAnimation: {fileID: 241493925}
   popOutAnimation: {fileID: 1380948026}
-  introClip: {fileID: 8300000, guid: b20cf405d255ee543bdad84b5874ad31, type: 3}
+  introClip: {fileID: 0}
 --- !u!1 &1006947082
 GameObject:
   m_ObjectHideFlags: 0
