@@ -32,7 +32,7 @@ namespace CrazyPhone
 
         [Header("Email")]
         [SerializeField] private AudioClip emailClip;
-        private PhoneLetterBuilder emailBuilder;
+        private PhoneLetterBuilder letterBuilder;
         [SerializeField] private AudioClip afterEmailClip;
         [SerializeField] private AudioClip pleaseHoldClip;
         [SerializeField] private AudioClip holdMusic;
@@ -48,8 +48,8 @@ namespace CrazyPhone
 
         private IEnumerator Start()
         {
-            emailBuilder = new PhoneLetterBuilder(input, 0.4f);
-            emailBuilder.SetEnable(false);
+            letterBuilder = new PhoneLetterBuilder(input, 0.4f);
+            letterBuilder.SetEnable(false);
             
             yield return new WaitForPhoneNumber(input, phoneNumber, OnUpdateState);
 
@@ -70,19 +70,27 @@ namespace CrazyPhone
 
             //"For additional security purposes, please type your name using the letters on your telephone keypad, followed by the star symbol."
             audioSource.PlayOneShot(nameClip);
+            letterBuilder.SetEnable(true);
             yield return new WaitForSeconds(nameClip.length + 1f);
             yield return new WaitForPhoneInput(input, "*");
+            PlayerInfo.name = letterBuilder.CurrentText;
+            letterBuilder.Clear();
+            letterBuilder.SetEnable(false);
 
             //To assist in directing your call, please type your email adress using the letters on your keypad, followed by the star symbol.
             audioSource.PlayOneShot(emailClip);
             yield return new WaitForSeconds(emailClip.length + 1f);
 
             //Enter email
-            emailBuilder.SetEnable(true);
+            letterBuilder.SetEnable(true);
             yield return new WaitForPhoneInput(input, "*");
+            PlayerInfo.email = letterBuilder.CurrentText;
+            letterBuilder.Clear();
+            letterBuilder.SetEnable(false);
+            
             audioSource.PlayOneShot(afterEmailClip);
             yield return new WaitForSeconds(afterEmailClip.length + 1f);
-            var email = $"{emailBuilder.CurrentText}@email.com";
+            var email = $"{letterBuilder.CurrentText}@email.com";
             TextToSpeech.Start(email);
             yield return new WaitForSeconds(2f + email.Length * 0.2f);
             
@@ -133,7 +141,7 @@ namespace CrazyPhone
 
         private void Update()
         {
-            emailBuilder.Update(Time.deltaTime);
+            letterBuilder.Update(Time.deltaTime);
         }
 
         private void OnUpdateState(WaitForPhoneNumber ph, bool wasCorrect)
