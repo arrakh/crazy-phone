@@ -6,6 +6,8 @@ namespace CrazyPhone.Input
 {
     public partial class PhoneInput : MonoBehaviour
     {
+        private const string PORT = "COM12";
+
         private const char DELIMITER = '~';
         private const string CLOSE = "down";
         private const string OPEN = "up";
@@ -22,6 +24,11 @@ namespace CrazyPhone.Input
 
         public event Action<string> onKeyDown; 
         public bool IsClosed => isClosed;
+
+        private void Awake()
+        {
+            serialController.portName = PORT;
+        }
 
         private void LateUpdate()
         {
