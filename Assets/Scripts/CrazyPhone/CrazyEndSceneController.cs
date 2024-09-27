@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using CrazyPhone.Input;
 using CrazyPhone.Utilities;
 using CrazyPhone.Yields;
+using TenSecondsReplay.Utilities;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace CrazyPhone
@@ -25,6 +27,18 @@ namespace CrazyPhone
         [Header("Smash Buttons")] 
         [SerializeField] private AudioSource screamSource;
         [SerializeField] private AnimationCurve screamProgressCurve;
+
+        [Header("Help Me")] 
+        [SerializeField] private AudioClip wrongSfx;
+        [SerializeField] private AudioClip correctSfx;
+        [SerializeField] private AudioClip helpMeClip, helpMePleaseClip, louderClip;
+        
+        [Header("Scream for help")]
+        [SerializeField] private AudioClip screamClip;
+        [SerializeField] private AudioClip crackSfx;
+        [SerializeField] private Image screenCrackImage;
+        [SerializeField] private Sprite secondCrack, thirdCrack;
+        [SerializeField] private ShakePositionAnimation screamShake;
 
         private IEnumerator Start()
         {
@@ -55,6 +69,53 @@ namespace CrazyPhone
             //Smash buttons to stop screaming 
             screamSource.Play();
             yield return new WaitForPhoneSpamInput(input, 20, OnUpdateScreamSpam, PhoneMappings.KeypadStrings);
+            
+            //[Distorted voice] In order to get help, please say: Help me.
+            audioSource.PlayOneShot(helpMeClip);
+            yield return new WaitForSeconds(helpMeClip.length + 0.5f);
+            yield return new WaitForPhoneInput(input, "5");
+            audioSource.PlayOneShot(wrongSfx);
+            yield return new WaitForSeconds(wrongSfx.length + 0.2f);
+            
+            //Louder. In order to get help, please say: Help me, please!
+            audioSource.PlayOneShot(helpMePleaseClip);
+            yield return new WaitForSeconds(helpMePleaseClip.length + 0.5f);
+            yield return new WaitForPhoneInput(input, "5");
+            audioSource.PlayOneShot(wrongSfx);
+            yield return new WaitForSeconds(wrongSfx.length + 0.2f);
+            
+            //I said louder!
+            audioSource.PlayOneShot(louderClip);
+            yield return new WaitForSeconds(louderClip.length + 0.2f);
+            yield return new WaitForPhoneInput(input, "5");
+            audioSource.PlayOneShot(wrongSfx);
+            yield return new WaitForSeconds(wrongSfx.length + 0.2f);
+            
+            //I said louder!
+            audioSource.PlayOneShot(louderClip);
+            yield return new WaitForSeconds(louderClip.length + 0.2f);
+            yield return new WaitForPhoneInput(input, "5");
+            audioSource.PlayOneShot(correctSfx);
+            yield return new WaitForSeconds(correctSfx.length + 0.2f);
+            
+            //Scream for help
+            audioSource.PlayOneShot(screamClip);
+            yield return new WaitForSeconds(screamClip.length);
+            yield return new WaitForPhoneSpamInput(input, 50, OnUpdateFinalScreamSpam, PhoneMappings.KeypadStrings);
+        }
+
+        private void OnUpdateFinalScreamSpam(WaitForPhoneSpamInput spamInput, bool success)
+        {
+            if (!success) return;
+            
+            switch (spamInput.NormalizedAlpha)
+            {
+                case > 0.1f and <= 0.25f: screenCrackImage.gameObject.SetActive(true); audioSource.PlayOneShot(crackSfx); break;
+                case > 0.25f and <= 0.6f: screenCrackImage.sprite = secondCrack; audioSource.PlayOneShot(crackSfx); break;
+                case >= 1f: screenCrackImage.sprite = thirdCrack; audioSource.PlayOneShot(crackSfx); break;
+            }
+            
+            screamShake.StartAnimation();
         }
 
         private void OnUpdateScreamSpam(WaitForPhoneSpamInput spamInput, bool success)

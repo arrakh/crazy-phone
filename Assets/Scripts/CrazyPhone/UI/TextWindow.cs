@@ -7,6 +7,7 @@ namespace CrazyPhone.UI
     public class TextWindow : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI inputText;
+        [SerializeField] private TextMeshProUGUI promptText;
         [SerializeField] private PhoneInput input;
 
         private PhoneLetterBuilder builder;
@@ -19,6 +20,7 @@ namespace CrazyPhone.UI
         public void Initialize(string targetText, float cooldown = 0.5f, bool isWarped = false)
         {
             target = targetText;
+            promptText.text = target;
             builder = new PhoneLetterBuilder(input, cooldown, isWarped);
             initialized = true;
         }
