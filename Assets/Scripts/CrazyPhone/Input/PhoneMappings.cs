@@ -59,6 +59,9 @@ namespace CrazyPhone.Input
 
             {KeyCode.A, "*"},
             {KeyCode.S, "#"},
+
+            {KeyCode.UpArrow, "up"},
+            {KeyCode.DownArrow, "down"},
         };
 
         public static char Get(string key, int index)
