@@ -44,6 +44,7 @@ namespace CrazyPhone
 
         private IEnumerator Start()
         {
+            input.onKeyDown += OnKeyDown;
             //First Fly
             flyLoopSource.Play();
             squashFirstFlyObject.SetActive(true);
@@ -133,16 +134,16 @@ namespace CrazyPhone
             screamSource.volume = screamProgressCurve.Evaluate(spamInput.NormalizedAlpha);
         }
 
-        private void Update()
+        private void OnKeyDown(string msg)
         {
-            KillSwarmUpdate();
-        }   
+            KillSwarmUpdate(msg);
+        }
 
-        private void KillSwarmUpdate()
+        private void KillSwarmUpdate(string msg)
         {
             if (!isKillingSwarm) return;
             if (activeFlies.Count <= 0) return;
-            if (!input.GetKeyDown("down")) return;
+            if (msg != "down") return;
             var fly = activeFlies.GetRandom();
             fly.gameObject.SetActive(false);
             flyLeft--;

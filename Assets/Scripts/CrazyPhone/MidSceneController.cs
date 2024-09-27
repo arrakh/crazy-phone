@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using CrazyPhone.Input;
+using CrazyPhone.UI;
 using CrazyPhone.Utilities;
 using CrazyPhone.Yields;
 using TenSecondsReplay.Utilities;
@@ -39,6 +40,11 @@ namespace CrazyPhone
         [SerializeField] private GameObject squashFlyObject;
         [SerializeField] private AudioClip squashFlyClip;
         [SerializeField] private AudioClip goodWorkClip;
+        
+        [Header("Name Input")]
+        [SerializeField] private AudioClip namePromptClip;
+        [SerializeField] private TextWindow textWindow;
+        [SerializeField] private ScaleAnimation textScaleOut;
 
         [Header("Please help me")] 
         [SerializeField] private AudioClip pleaseHelpClip;
@@ -106,6 +112,19 @@ namespace CrazyPhone
             flyLoopSource.Stop();
             yield return new WaitForPhonePickUp(input);
             yield return new WaitForSeconds(2f);
+            
+            //For authentication purposes, please type your name
+            audioSource.PlayOneShot(namePromptClip);
+            yield return new WaitForSeconds(namePromptClip.length + 0.4f);
+            
+            textWindow.Initialize(PlayerInfo.name);
+            textWindow.gameObject.SetActive(true);
+
+            yield return new WaitUntil(() => textWindow.IsCompleted);
+            
+            textScaleOut.StartAnimation();
+            yield return new WaitForSeconds(textScaleOut.Duration);
+            textWindow.gameObject.SetActive(false);
 
             //Good work! You are almost there, now please listen carefully.
             audioSource.PlayOneShot(goodWorkClip);

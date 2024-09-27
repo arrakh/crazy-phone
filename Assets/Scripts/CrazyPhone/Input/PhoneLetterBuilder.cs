@@ -51,7 +51,7 @@ namespace CrazyPhone.Input
                 currentCount = 0;
             }
 
-            currentLetter = PhoneMappings.Get(lastKey, currentCount);
+            currentLetter = isWarped ? PhoneMappings.GetWarped(lastKey, currentCount) : PhoneMappings.Get(lastKey, currentCount);
             if (currentLetter.Equals(' ')) return;
 
             //if (!isSameKey && !isFirstTime) return;

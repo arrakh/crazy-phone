@@ -53,8 +53,8 @@ namespace CrazyPhone.Input
 
             switch (key)
             {
-                case CLOSE: isClosed = true; return;
-                case OPEN: isClosed = false; return;
+                case CLOSE: isClosed = true; onKeyDown?.Invoke(CLOSE); return;
+                case OPEN: isClosed = false; onKeyDown?.Invoke(OPEN); return;
             }
             
             var state = split[1];

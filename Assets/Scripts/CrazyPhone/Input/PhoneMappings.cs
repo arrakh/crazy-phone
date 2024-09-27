@@ -21,14 +21,14 @@ namespace CrazyPhone.Input
         
         private static Dictionary<string, char[]> _mappingWarped = new(StringComparer.OrdinalIgnoreCase)
         {
-            {"2", new []{'a', 'b', 'c'}},
-            {"3", new []{'d', 'e', 'f'}},
-            {"4", new []{'g', 'h', 'i'}},
-            {"5", new []{'j', 'k', 'l'}},
-            {"6", new []{'m', 'n', 'o'}},
-            {"7", new []{'p', 'r', 's'}},
-            {"8", new []{'t', 'u', 'v'}},
-            {"9", new []{'w', 'x', 'y'}},
+            {"3", new []{'a', 'b', 'c'}},
+            {"4", new []{'d', 'e', 'f'}},
+            {"5", new []{'g', 'h', 'i'}},
+            {"6", new []{'j', 'k', 'l'}},
+            {"7", new []{'m', 'n', 'o'}},
+            {"8", new []{'p', 'r', 's'}},
+            {"9", new []{'t', 'u', 'v'}},
+            {"2", new []{'w', 'x', 'y'}},
         };
 
         public static string[] KeypadStrings = new[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", };
