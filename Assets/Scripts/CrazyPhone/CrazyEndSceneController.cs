@@ -68,6 +68,8 @@ namespace CrazyPhone
 
             yield return new WaitUntil(() => flyLeft <= 0);
             flyLoopSource.Stop();
+
+            yield return new WaitForPhoneHangUp(input);
             
             //Smash buttons to stop screaming 
             screamSource.Play();
@@ -119,11 +121,11 @@ namespace CrazyPhone
         {
             if (!success) return;
             
-            switch (spamInput.NormalizedAlpha)
+            switch (spamInput.CurrentCount)
             {
-                case > 0.1f and <= 0.25f: screenCrackImage.gameObject.SetActive(true); audioSource.PlayOneShot(crackSfx); break;
-                case > 0.25f and <= 0.6f: screenCrackImage.sprite = secondCrack; audioSource.PlayOneShot(crackSfx); break;
-                case >= 1f: screenCrackImage.sprite = thirdCrack; audioSource.PlayOneShot(crackSfx); break;
+                case 10: screenCrackImage.gameObject.SetActive(true); audioSource.PlayOneShot(crackSfx); break;
+                case 20: screenCrackImage.sprite = secondCrack; audioSource.PlayOneShot(crackSfx); break;
+                case 50: screenCrackImage.sprite = thirdCrack; audioSource.PlayOneShot(crackSfx); break;
             }
             
             screamShake.StartAnimation();
@@ -147,6 +149,7 @@ namespace CrazyPhone
             var fly = activeFlies.GetRandom();
             fly.gameObject.SetActive(false);
             flyLeft--;
+            Debug.Log($"FLY LEFT {flyLeft}");
             activeFlies.Remove(fly);
         }
     }

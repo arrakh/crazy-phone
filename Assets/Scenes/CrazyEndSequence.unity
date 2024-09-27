@@ -2101,8 +2101,8 @@ MonoBehaviour:
   screamClip: {fileID: 8300000, guid: a4b92d48506592c40be5d91a8483823b, type: 3}
   crackSfx: {fileID: 8300000, guid: fe0fc10d336ee05418c4273e74abf4f1, type: 3}
   screenCrackImage: {fileID: 1148369929}
-  secondCrack: {fileID: 21300000, guid: 401c7784984c9f241abab2d0a2c922fc, type: 3}
-  thirdCrack: {fileID: 21300000, guid: 3c3563d77490aa7419d69c870f39b8f3, type: 3}
+  secondCrack: {fileID: 21300000, guid: 3c3563d77490aa7419d69c870f39b8f3, type: 3}
+  thirdCrack: {fileID: 21300000, guid: 401c7784984c9f241abab2d0a2c922fc, type: 3}
   screamShake: {fileID: 1369736134}
   finalWinClip: {fileID: 8300000, guid: 006ae560251e72844833acf235016c9f, type: 3}
 --- !u!1 &728709253
@@ -3509,7 +3509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4440,9 +4440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33130dddc3bf4f239ea1676aefe7964a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1369736135}
   playOnStart: 1
-  shakeStrength: {x: 6, y: 6, z: 0}
+  shakeStrength: {x: 50, y: 50, z: 0}
   duration: 0.2
   vibrato: 50
   ease: 0

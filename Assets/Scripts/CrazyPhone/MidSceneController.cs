@@ -54,6 +54,7 @@ namespace CrazyPhone
 
         [Header("Please Hold")] 
         [SerializeField] private AudioClip pleaseHoldClip;
+        [SerializeField] private AudioClip holdMusic;
         [SerializeField] private float holdMusicDuration;
         [SerializeField] private AudioClip toContinueClip;
 
@@ -150,8 +151,12 @@ namespace CrazyPhone
             audioSource.PlayOneShot(thankYouForFollowingClip);
             yield return new WaitForSeconds(thankYouForFollowingClip.length + 1f);
             
+            //Please Hold.
+            audioSource.PlayOneShot(pleaseHoldClip);
+            yield return new WaitForSeconds(pleaseHoldClip.length + 1f);
+            
             //Hold music
-            audioSource.clip = pleaseHoldClip;
+            audioSource.clip = holdMusic;
             audioSource.Play();
             yield return new WaitForSeconds(holdMusicDuration);
             audioSource.Stop();
