@@ -95,6 +95,10 @@ namespace CrazyPhone
             yield return new WaitForSeconds(holdMusicDuration);
             audioSource.Stop();
             
+            //Thank you for providing your personal information, we have located your position.
+            audioSource.PlayOneShot(thankForProvideClip);
+            yield return new WaitForSeconds(thankForProvideClip.length + 1f);
+            
             //To confirm that our camera surveillance is working properly, please press 5... after pressing 7.
             audioSource.PlayOneShot(fiveAfterSevenClip);
             yield return new WaitForSeconds(fiveAfterSevenClip.length);

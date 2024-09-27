@@ -3,6 +3,7 @@ using System.Collections;
 using CrazyPhone.Input;
 using CrazyPhone.Utilities;
 using CrazyPhone.Yields;
+using TenSecondsReplay.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ namespace CrazyPhone
         [SerializeField] private Slider slider;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip audioClip;
+        [SerializeField] private ShakePositionAnimation snailShake;
 
         private WaitForPhoneNumber phone;
 
@@ -24,6 +26,7 @@ namespace CrazyPhone
 
         private IEnumerator Start()
         {
+            input.onKeyDown += OnKeyDown;
             /*Debug.Log("START");
             input.SendSerialMessage("ringA");
             yield return new WaitForPhonePickUp(input);
@@ -34,6 +37,11 @@ namespace CrazyPhone
             spam = new WaitForPhoneSpamInput(input, 80, "1", "3", "9");
             yield return spam.PlayAudioParallel(audioSource, audioClip, 3f);
             Debug.Log("DONE!");
+        }
+
+        private void OnKeyDown(string msg)
+        {
+            if (msg.Equals("1")) snailShake.StartAnimation();
         }
 
         /*private void Start()

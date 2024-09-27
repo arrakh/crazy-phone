@@ -3,6 +3,7 @@ using CrazyPhone.Input;
 using CrazyPhone.Yields;
 using TenSecondsReplay.Utilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CrazyPhone
 {
@@ -42,6 +43,8 @@ namespace CrazyPhone
 
         [Header("Please Hold")] 
         [SerializeField] private AudioClip pleaseHoldClip;
+        [SerializeField] private float holdMusicDuration;
+        [SerializeField] private AudioClip toContinueClip;
 
         private IEnumerator Start()
         {
@@ -112,6 +115,19 @@ namespace CrazyPhone
             //Thank you for following the instructions carefully.
             audioSource.PlayOneShot(thankYouForFollowingClip);
             yield return new WaitForSeconds(thankYouForFollowingClip.length + 1f);
+            
+            //Hold music
+            audioSource.clip = pleaseHoldClip;
+            audioSource.Play();
+            yield return new WaitForSeconds(holdMusicDuration);
+            audioSource.Stop();
+            
+            //Now in order to continue, please hang up and call the number provided on the screen.
+            audioSource.PlayOneShot(toContinueClip);
+            yield return new WaitForSeconds(pleaseHelpClip.length + 0.5f);
+
+            yield return new WaitForPhoneHangUp(input);
+            SceneManager.LoadScene("CrazySequence");
         }
 
         private void OnSnailSpam(WaitForPhoneSpamInput spamInput, bool success)

@@ -9,6 +9,7 @@ namespace TenSecondsReplay.Utilities
         [SerializeField] private bool playOnStart = true;
         [SerializeField] private Vector3 shakeStrength;
         [SerializeField] private float duration;
+        [SerializeField] private int vibrato = 10;
         [SerializeField] private Ease ease;
         [SerializeField] private int loopCount;
         [SerializeField] private LoopType loopType;
@@ -32,7 +33,7 @@ namespace TenSecondsReplay.Utilities
                 ? Random.Range(duration - randomDurationRange, duration + randomDurationRange)
                 : duration;
             
-            tween = target.DOShakePosition(dur, shakeStrength)
+            tween = target.DOShakePosition(dur, shakeStrength, vibrato)
                 .SetEase(ease)
                 .SetLoops(loopCount, loopType);
         }
