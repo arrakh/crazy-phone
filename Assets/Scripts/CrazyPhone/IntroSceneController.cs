@@ -94,7 +94,7 @@ namespace CrazyPhone
             
             //Please hold
             audioSource.PlayOneShot(pleaseHoldClip);
-            yield return new WaitForSeconds(pleaseHoldClip.length + 0.5f);
+            yield return new WaitForSeconds(pleaseHoldClip.length);
             
             //Hold music
             audioSource.clip = holdMusic;
