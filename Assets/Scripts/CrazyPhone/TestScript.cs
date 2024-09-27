@@ -14,6 +14,8 @@ namespace CrazyPhone
         [SerializeField] private PhoneInput input;
         [SerializeField] private TextMeshProUGUI text;
         [SerializeField] private Slider slider;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip audioClip;
 
         private WaitForPhoneNumber phone;
 
@@ -22,16 +24,16 @@ namespace CrazyPhone
 
         private IEnumerator Start()
         {
-            Debug.Log("START");
+            /*Debug.Log("START");
             input.SendSerialMessage("ringA");
             yield return new WaitForPhonePickUp(input);
             Debug.Log("PICKED UP, put it down...");
             yield return new WaitForPhoneHangUp(input);
-            Debug.Log("NICEEEEE");
+            Debug.Log("NICEEEEE");*/
             
-            /*spam = new WaitForPhoneSpamInput(input, 80, "1", "3", "9");
-            yield return spam;
-            Debug.Log("DONE!")*/;
+            spam = new WaitForPhoneSpamInput(input, 80, "1", "3", "9");
+            yield return spam.PlayAudioParallel(audioSource, audioClip, 3f);
+            Debug.Log("DONE!");
         }
 
         /*private void Start()
@@ -42,7 +44,7 @@ namespace CrazyPhone
 
         private void Update()
         {
-            //slider.value = spam.NormalizedAlpha;
+            slider.value = spam.NormalizedAlpha;
             //text.text = phone.CurrentProgress;
             //builder.Update(Time.deltaTime);
             //text.text = $"{builder.CurrentText}<alpha=#44>{builder.CurrentLetter.ToString()}";
