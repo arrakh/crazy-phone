@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 namespace CrazyPhone
 {
-    public class FormSceneController : MonoBehaviour
+    public class FormSceneController2 : MonoBehaviour
     {
         [SerializeField] private PhoneInput input;
         [SerializeField] private AudioSource audioSource;
@@ -20,11 +20,13 @@ namespace CrazyPhone
         [SerializeField] private ScaleAnimation popInAnimation, popOutAnimation;
         [SerializeField] private AudioClip introClip;
 
-        private readonly string formConfirmationNumber = "215920";
+        private readonly string formConfirmationNumber = "39725";
 
         private IEnumerator Start()
         {            
             popInAnimation.StartAnimation();
+
+            // TODO: add intro clip.
             audioSource.PlayOneShot(introClip);
 
             yield return new WaitForPhoneNumber(input, formConfirmationNumber, OnUpdateState);
@@ -37,7 +39,8 @@ namespace CrazyPhone
             
             yield return new WaitForSeconds(popOutAnimation.Duration);
 
-            SceneManager.LoadScene("MidSequence");
+            // TODO: LOAD NEXT SCENE!
+            // SceneManager.LoadScene("MidSequence");
         }
 
         private void OnUpdateState(WaitForPhoneNumber ph, bool wasCorrect)
@@ -45,8 +48,8 @@ namespace CrazyPhone
             if (!wasCorrect)
             {
                 ph.Clear();
-                
-                // TODO: This does not work
+
+                // TODO: this does not work
                 // if (ph.CurrentProgress[^1].Equals("0")) audioSource.PlayOneShot(wrongClip);
             }
         }

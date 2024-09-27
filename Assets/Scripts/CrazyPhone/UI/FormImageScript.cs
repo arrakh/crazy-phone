@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 namespace CrazyPhone
 {
     public class FormImageScript : MonoBehaviour
@@ -18,6 +19,9 @@ namespace CrazyPhone
         [SerializeField] private Sprite form1;
         [SerializeField] private Sprite form2;
         [SerializeField] private Sprite form3;
+        [SerializeField] private Sprite form4;
+        [SerializeField] private Sprite form5;
+        [SerializeField] private Sprite form6;
 
         private List<Sprite> forms = new List<Sprite>();
         private int currentForm = 1;
@@ -26,6 +30,18 @@ namespace CrazyPhone
             forms.Add(form1);
             forms.Add(form2);
             forms.Add(form3);
+
+            // don't hate me for this ugly code i'm sleepy
+            if (form4) {
+                forms.Add(form4);
+            }
+            if (form5) {
+                forms.Add(form5);
+            }
+            if (form6) {
+                forms.Add(form6);
+            }
+
         }
 
         // Update is called once per frame
@@ -52,7 +68,7 @@ namespace CrazyPhone
             if (nextPage)
             {
                 currentForm++;
-                if (currentForm == 4)
+                if (currentForm == forms.Count + 1)
                 {
                     currentForm = 1;
                 }
@@ -62,7 +78,7 @@ namespace CrazyPhone
                 currentForm--;
                 if (currentForm == 0)
                 {
-                    currentForm = 3;
+                    currentForm = forms.Count;
                 }
             }
 
