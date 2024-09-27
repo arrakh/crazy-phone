@@ -1037,21 +1037,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 1086927089}
   audioSource: {fileID: 696409309}
-  phoneNumber: 268
+  phoneNumber: 268410269
   holdTone: {fileID: 8300000, guid: 6917592710a997c4180f39a28c588a43, type: 3}
   holdDuration: 9
-  asylumIntro: {fileID: 8300000, guid: 6c67ce4131180b74fa6e5cd23fe14452, type: 3}
-  namePromptClip: {fileID: 0}
+  asylumIntro: {fileID: 8300000, guid: 54334a12ccd486d4d8148ed3e7e696c7, type: 3}
+  namePromptClip: {fileID: 8300000, guid: 2561e10ed5eada54f8901764954f260c, type: 3}
   textWindow: {fileID: 745238053}
   textScaleOut: {fileID: 745238054}
   flyLoopSource: {fileID: 1828675711}
   squashFlyObject: {fileID: 322768190}
-  squashFlyClip: {fileID: 0}
-  beNiceClip: {fileID: 0}
-  helpMeClip: {fileID: 0}
-  wrongSfx: {fileID: 0}
-  correctSfx: {fileID: 0}
-  thankYouForFollowingClip: {fileID: 0}
+  squashFlyClip: {fileID: 8300000, guid: d720588fe26a8934ba21a3e100c22864, type: 3}
+  beNiceClip: {fileID: 8300000, guid: b10a56b70596fcc45ad2021b447e8800, type: 3}
+  helpMeClip: {fileID: 8300000, guid: 57d8f92d99e0fa84daf26efb9fe2e75c, type: 3}
+  wrongSfx: {fileID: 8300000, guid: fbe7cc8e0e3e7df4f91f27342ef571ad, type: 3}
+  correctSfx: {fileID: 8300000, guid: 2e081760883baab419d9516390da397e, type: 3}
+  thankYouForFollowingClip: {fileID: 8300000, guid: b5ae5b5b5f7fa874eaf3d239dffe4554, type: 3}
   helpMe: {fileID: 8300000, guid: 5fcfe4dc75ffd534c9846d1248c28ea3, type: 3}
   press5: {fileID: 8300000, guid: 821be0dbbbe0fe649a0174c62e69b1b0, type: 3}
   Five: 5
