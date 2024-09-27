@@ -960,7 +960,7 @@ MonoBehaviour:
   audioSource: {fileID: 696409309}
   thankYouClip: {fileID: 8300000, guid: 36ad0cde18d5e8a498fa2093bd184e4a, type: 3}
   flies: {fileID: 745238051}
-  likeFliesClip: {fileID: 8300000, guid: 8d71a734df2204041b546f15dc4f59e9, type: 3}
+  likeFliesClip: {fileID: 8300000, guid: c6b28b7d44f9973488e7a704efc32bb3, type: 3}
   appoMonthClip: {fileID: 8300000, guid: a820299efb8aa334198e164b96f9c730, type: 3}
   snailObject: {fileID: 1938991917}
   snailClip: {fileID: 8300000, guid: ae22943cd51dc374ca0eb7020f6be9e4, type: 3}
