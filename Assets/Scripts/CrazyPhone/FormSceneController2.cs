@@ -39,7 +39,7 @@ namespace CrazyPhone
             
             yield return new WaitForSeconds(popOutAnimation.Duration);
 
-            SceneManager.LoadScene("MidSequence");
+            SceneManager.LoadScene("CrazyEndSequence");
         }
 
         private void OnUpdateState(WaitForPhoneNumber ph, bool wasCorrect)
