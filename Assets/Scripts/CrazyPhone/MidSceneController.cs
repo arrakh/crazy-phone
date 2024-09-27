@@ -72,7 +72,8 @@ namespace CrazyPhone
             //To start the application process, please provide a month for your chosen appointment, using the the letters on your keypad.
             audioSource.PlayOneShot(appoMonthClip);
             yield return new WaitForSeconds(appoMonthClip.length + 1f);
-            
+            yield return new WaitForPhoneInput(input, "*");
+
             //It appears a snail is blocking you from progressing further in the application process. Please remove the snail.
             snailObject.SetActive(true);
             audioSource.PlayOneShot(snailClip);
@@ -84,7 +85,8 @@ namespace CrazyPhone
             //To start the application process, please provide a day for your chosen appointment, using the the letters on your keypad, followed by the star symbol.
             audioSource.PlayOneShot(appoDayClip);
             yield return new WaitForSeconds(appoDayClip.length + 1f);
-            
+            yield return new WaitForPhoneInput(input, "*");
+
             //Sounds like a fly has been trapped in your phone, please put the phone down to smash it. Don't forget to pick up again.
             flyLoopSource.Play();
             squashFlyObject.SetActive(true);
