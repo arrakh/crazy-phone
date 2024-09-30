@@ -41,7 +41,8 @@ namespace CrazyPhone
         [SerializeField] private ShakePositionAnimation screamShake;
 
         [SerializeField] private AudioClip finalWinClip;
-
+        [SerializeField] private GameObject blackScreen;
+        
         private IEnumerator Start()
         {
             input.onKeyDown += OnKeyDown;
@@ -107,6 +108,8 @@ namespace CrazyPhone
             audioSource.PlayOneShot(screamClip);
             yield return new WaitForSeconds(screamClip.length);
             yield return new WaitForPhoneSpamInput(input, 50, OnUpdateFinalScreamSpam, PhoneMappings.KeypadStrings);
+            
+            blackScreen.SetActive(true);
             
             //Congratulations.... You appointment for City of Óbidos National Sanatorium is confirmed. Thank you for calling. Good bye.
             yield return new WaitForSeconds(3f);
