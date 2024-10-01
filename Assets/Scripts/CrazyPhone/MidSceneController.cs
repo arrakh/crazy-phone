@@ -87,8 +87,8 @@ namespace CrazyPhone
 
             //It appears a snail is blocking you from progressing further in the application process. Please remove the snail.
             snailObject.SetActive(true);
-            // audioSource.PlayOneShot(snailClip);
-            // yield return new WaitForSeconds(snailClip.length + 1f);
+            audioSource.PlayOneShot(snailClip);
+            yield return new WaitForSeconds(snailClip.length + 1f);
             yield return new WaitForPhoneSpamInput(input, 10, OnSnailSpam, "6");
             
             snailPopOutAnimation.StartAnimation();
