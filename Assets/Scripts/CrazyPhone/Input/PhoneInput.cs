@@ -6,7 +6,7 @@ namespace CrazyPhone.Input
 {
     public partial class PhoneInput : MonoBehaviour
     {
-        private const string PORT = "COM12";
+        public static string PORT = "COM12";
 
         private const char DELIMITER = '~';
         private const string CLOSE = "down";
@@ -23,12 +23,9 @@ namespace CrazyPhone.Input
         private bool isClosed, isConnected;
 
         public event Action<string> onKeyDown; 
+        public event Action<string> onSerializedMessage; 
         public bool IsClosed => isClosed;
-
-        private void Awake()
-        {
-            //serialController.portName = PORT;
-        }
+        public bool IsConnected => isConnected;
 
         private void LateUpdate()
         {
@@ -45,6 +42,8 @@ namespace CrazyPhone.Input
         void OnMessageArrived(string msg)
         {
             //Debug.Log(msg);
+            onSerializedMessage?.Invoke(msg);
+            if (string.IsNullOrWhiteSpace(msg)) return;
 
             var split = msg.Split(DELIMITER);
             if (string.IsNullOrWhiteSpace(split[0])) return;
@@ -57,6 +56,8 @@ namespace CrazyPhone.Input
                 case OPEN: isClosed = false; onKeyDown?.Invoke(OPEN); return;
             }
             
+            if (split.Length <= 1) return;
+
             var state = split[1];
             
             bool isDown = state[0] == DOWN;

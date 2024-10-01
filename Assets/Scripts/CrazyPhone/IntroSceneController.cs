@@ -91,7 +91,7 @@ namespace CrazyPhone
             
             audioSource.PlayOneShot(afterEmailClip);
             yield return new WaitForSeconds(afterEmailClip.length + 1f);
-            var email = $"{letterBuilder.CurrentText}@email.com";
+            var email = $"{letterBuilder.CurrentText}@ email dot com";
             TextToSpeech.Start(email);
             yield return new WaitForSeconds(2f + email.Length * 0.2f);
             letterBuilder.Clear();

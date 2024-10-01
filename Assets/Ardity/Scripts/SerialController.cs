@@ -8,6 +8,7 @@
 
 using UnityEngine;
 using System.Threading;
+using CrazyPhone.Input;
 
 /**
  * This class allows a Unity program to continually check for messages from a
@@ -64,7 +65,8 @@ public class SerialController : MonoBehaviour
     // ------------------------------------------------------------------------
     void OnEnable()
     {
-        serialThread = new SerialThreadLines(portName, 
+        portName = PhoneInput.PORT;
+        serialThread = new SerialThreadLines(PhoneInput.PORT, 
                                              baudRate, 
                                              reconnectionDelay,
                                              maxUnreadMessages);
