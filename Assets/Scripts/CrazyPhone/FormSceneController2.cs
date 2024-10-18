@@ -12,6 +12,7 @@ namespace CrazyPhone
     {
         [SerializeField] private PhoneInput input;
         [SerializeField] private AudioSource audioSource;
+        [SerializeField] private string formConfirmationNumber;
         
         [Header("Audio Clips")]
         [SerializeField] private AudioClip pageSwitch;
@@ -19,8 +20,6 @@ namespace CrazyPhone
         [SerializeField] private AudioClip success;
         [SerializeField] private ScaleAnimation popInAnimation, popOutAnimation;
         [SerializeField] private AudioClip introClip;
-
-        private readonly string formConfirmationNumber = "39725";
 
         private IEnumerator Start()
         {            
