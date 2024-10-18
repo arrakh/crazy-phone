@@ -72,6 +72,8 @@ namespace CrazyPhone
                 break;
             }
             
+            PhoneInput.PORT = "none";
+
             if (!connected) UpdateStatus("no device connected!");
             UpdateProgress(progress, progress);
             yield return new WaitForSeconds(2f);
